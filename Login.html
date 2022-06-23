@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+
+    <body>
+        <br><br><br><br><br>
+        <center>
+            <div id="login">
+                <div>
+                    <table>
+                    <tr>
+                        <td><label>用户名：</label></td>
+                        <td><input v-model="username" placeholder="请输入用户名" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>密码：</label></td>
+                        <td><input type="password" v-model="username" placeholder="请输入密码" /></td>
+                    </tr>
+
+                    </table>
+                    <br>
+                    <center><button type="primary" v-on:click="Login(username, password)">登录</button></center>
+                </div>
+                <span>{{ username }}</span>
+                <span>{{ password }}</span>
+            </div>
+        </center>
+        <script type="text/javascript">
+            new Vue({
+                el: "#login",
+                data: {
+                    username: '',
+                    password: ''
+                },
+                methods: {
+                    Login: function(username, password){
+                        if(password.length < 8)
+                        {
+                            alert("密码不能小于8位！")
+                        }
+                        else
+                        {
+                            axios.get('http://www.baidu.com', {
+                                params: {
+                                    username: username,
+                                    password: password
+                                }
+                            })
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+
+</html>
